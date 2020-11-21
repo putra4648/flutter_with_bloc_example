@@ -1,7 +1,9 @@
 part of 'navigation_bloc.dart';
 
 @immutable
-abstract class NavigationState {}
+abstract class NavigationState {
+  const NavigationState();
+}
 
 class NavigationToHome extends NavigationState {}
 
