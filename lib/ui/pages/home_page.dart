@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(20),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: 'Enter recipes name',
+                  hintText: 'Cari nama resep',
                 ),
                 onSubmitted: (value) => BlocProvider.of<MealBloc>(context)
                     .add(MealEventSearch(query: value)),

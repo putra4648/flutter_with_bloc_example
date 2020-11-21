@@ -1,16 +1,10 @@
 # the_meal_db
 
-A new Flutter project.
+Sebuah app resep masakan, sederhana bagaimana cara menggunakan flutter_bloc 
 
-## Getting Started
+## Fitur
+- [x] Mencari nama resep (Inggris)
+- [x] Detail dari resep tersebut
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Preview
+<img src=".preview/vokoscreenNG-2020-11-21_14-23-00.gif"/>

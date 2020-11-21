@@ -39,6 +39,13 @@ class DetailPage extends StatelessWidget {
             ),
             expandedHeight: size.height * 0.4,
           ),
+          _showLabel('Instruksi', context),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Text(routeArgs.instruction),
+            ),
+          ),
           _showLabel('Ingredients', context),
           _showDetailRecipes(size, filteredIngredients, filteredMeasures),
         ],
