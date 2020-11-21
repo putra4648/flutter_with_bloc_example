@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 // part 'navigation_event.dart';
 part 'navigation_state.dart';
 
-enum Navigation { Home, Detail }
+enum Navigation { Home, Detail, Category }
 
 class NavigationBloc extends Bloc<Navigation, NavigationState> {
   NavigationBloc() : super(NavigationToHome());
@@ -18,9 +18,11 @@ class NavigationBloc extends Bloc<Navigation, NavigationState> {
       case Navigation.Home:
         yield NavigationToHome();
         break;
-
       case Navigation.Detail:
         yield NavigationToDetail();
+        break;
+      case Navigation.Category:
+        yield NavigationToCategory();
         break;
     }
   }

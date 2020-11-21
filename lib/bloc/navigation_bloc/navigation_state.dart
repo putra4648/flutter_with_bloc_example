@@ -1,10 +1,10 @@
 part of 'navigation_bloc.dart';
 
 @immutable
-abstract class NavigationState {
-  const NavigationState();
-}
+abstract class NavigationState {}
 
 class NavigationToHome extends NavigationState {}
 
 class NavigationToDetail extends NavigationState {}
+
+class NavigationToCategory extends NavigationState {}

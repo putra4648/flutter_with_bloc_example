@@ -35,7 +35,7 @@ class Meal {
       mealName: json['strMeal'],
       category: json['strCategory'],
       region: json['strArea'],
-      instruction: json['strInstruction'],
+      instruction: json['strInstructions'],
       thumbnailUrl: json['strMealThumb'],
       tags: json['strTags'],
       ingredients: ingredients,

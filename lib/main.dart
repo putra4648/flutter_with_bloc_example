@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:the_meal_db/ui/pages/category_page.dart';
 
 import 'bloc/meal_bloc/meal_bloc.dart';
 import 'bloc/navigation_bloc/navigation_bloc.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/detail': (context) => DetailPage(),
+        '/category': (context) => CategoryPage(),
       },
       initialRoute: '/',
     );
