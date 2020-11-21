@@ -23,6 +23,7 @@ class MealGetCategories extends MealEvent {}
 
 class MealGetFilteredCategories extends MealEvent {
   final String category;
+  final Category categoryArgs;
 
-  MealGetFilteredCategories(this.category);
+  MealGetFilteredCategories(this.category, this.categoryArgs);
 }

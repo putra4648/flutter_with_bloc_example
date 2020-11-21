@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:the_meal_db/models/category.dart';
 
 import '../../bloc/meal_bloc/meal_bloc.dart';
 import '../../models/meal.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    BlocProvider.of<MealBloc>(context).add(MealGetCategories());
-    super.initState();
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -68,40 +58,29 @@ class _HomePageState extends State<HomePage> {
           ),
           LimitedBox(
             maxHeight: size.height * 0.05,
-            child: BlocBuilder<MealBloc, MealState>(
-              builder: (context, state) {
-                if (state is MealInitial) {
-                  return LinearProgressIndicator();
-                }
-                if (state is MealCategoriesLoaded) {
-                  return ListView.builder(
-                    itemCount: state.categories.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: OutlineButton(
-                        onPressed: () {
-                          BlocProvider.of<MealBloc>(context).add(
-                            MealGetFilteredCategories(
-                                state.categories[index].name),
-                          );
-                          Navigator.pushReplacementNamed(context, '/category',
-                              arguments: state.categories[index]);
-                        },
-                        child: Text(state.categories[index].name),
+            child: ListView.builder(
+              itemCount: Category.categoriesName.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: OutlineButton(
+                  onPressed: () {
+                    BlocProvider.of<MealBloc>(context).add(
+                      MealGetFilteredCategories(
+                        Category.categoriesName[index],
+                        Category(
+                          id: null,
+                          name: Category.categoriesName[index],
+                          thumbUrl: null,
+                          description: null,
+                        ),
                       ),
-                    ),
-                  );
-                }
-                if (state is MealFailure) {
-                  return Center(
-                    child: Text(state.message),
-                  );
-                }
-                return Container(
-                  child: Text('error'),
-                );
-              },
+                    );
+                    Navigator.pushReplacementNamed(context, '/category');
+                  },
+                  child: Text(Category.categoriesName[index]),
+                ),
+              ),
             ),
           ),
           Padding(
@@ -129,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   }
                   if (state is MealLoaded) {
-                    return _showData(state.meals);
+                    return _showData(state.meals, context);
                   }
                   if (state is MealFailure) {
                     return Center(
@@ -146,7 +125,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _showData(List<Meal> meals) {
+  Widget _showData(List<Meal> meals, BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: meals

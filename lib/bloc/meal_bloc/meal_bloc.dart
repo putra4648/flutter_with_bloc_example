@@ -50,7 +50,9 @@ class MealBloc extends Bloc<MealEvent, MealState> {
       yield MealFilteredCategoriesLoading();
       final filteredCategories =
           await repositoriesImpl.getCategoryMeals(event.category);
-      yield MealFilteredCategoriesLoaded(filteredCategories);
+      yield MealFilteredCategoriesLoaded(
+          filteredCategoryMeals: filteredCategories,
+          categoryArgs: event.categoryArgs);
     } catch (e) {
       yield MealFailure(e.toString());
     }

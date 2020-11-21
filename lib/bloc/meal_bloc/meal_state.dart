@@ -18,8 +18,10 @@ class MealLoaded extends MealState {
 class MealFilteredCategoriesLoading extends MealState {}
 
 class MealFilteredCategoriesLoaded extends MealState {
-  final List<Meal> meals;
-  const MealFilteredCategoriesLoaded(this.meals);
+  final Category categoryArgs;
+  final List<Meal> filteredCategoryMeals;
+  const MealFilteredCategoriesLoaded(
+      {@required this.filteredCategoryMeals, this.categoryArgs});
 }
 
 class MealCategoriesLoading extends MealState {}

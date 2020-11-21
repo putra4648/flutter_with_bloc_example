@@ -6,62 +6,62 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, '/');
-          },
-          child: Icon(Icons.arrow_back),
-        ),
-        body: BlocBuilder<MealBloc, MealState>(
-          builder: (context, state) {
-            if (state is MealLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (state is MealLoaded) {
-              return CustomScrollView(
-                slivers: [
-                  _showAppBar(state, size),
-                  _showLabel('Instructions', context),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(state.meals[0].instruction ?? ''),
-                    ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, '/');
+        },
+        child: Icon(Icons.arrow_back),
+      ),
+      body: BlocBuilder<MealBloc, MealState>(
+        builder: (context, state) {
+          if (state is MealLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is MealLoaded) {
+            return CustomScrollView(
+              slivers: [
+                _showAppBar(state, size),
+                _showLabel('Instructions', context),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(state.meals[0].instruction ?? ''),
                   ),
-                  _showLabel('Ingredients', context),
-                  _showDetailRecipes(size, state),
-                ],
-              );
-            }
+                ),
+                _showLabel('Ingredients', context),
+                _showDetailRecipes(size, state),
+              ],
+            );
+          }
 
-            if (state is MealDetailLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (state is MealDetailLoaded) {
-              return CustomScrollView(
-                slivers: [
-                  _showAppBar(state, size),
-                  _showLabel('Instructions', context),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(state.meals[0].instruction ?? ''),
-                    ),
+          if (state is MealDetailLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is MealDetailLoaded) {
+            return CustomScrollView(
+              slivers: [
+                _showAppBar(state, size),
+                _showLabel('Instructions', context),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(state.meals[0].instruction ?? ''),
                   ),
-                  _showLabel('Ingredients', context),
-                  _showDetailRecipes(size, state),
-                ],
-              );
-            }
-            return Container();
-          },
-        ));
+                ),
+                _showLabel('Ingredients', context),
+                _showDetailRecipes(size, state),
+              ],
+            );
+          }
+          return Container();
+        },
+      ),
+    );
   }
 
   Widget _showAppBar(MealState state, Size size) {
