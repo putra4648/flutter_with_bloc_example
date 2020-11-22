@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:the_meal_db/ui/pages/category_page.dart';
 
 import 'bloc/meal_bloc/meal_bloc.dart';
-import 'bloc/navigation_bloc/navigation_bloc.dart';
 import 'repositories/remote_data/repos_impl.dart';
 import 'ui/pages/detail_page.dart';
 import 'ui/pages/home_page.dart';
@@ -16,9 +15,6 @@ void main() {
           create: (context) => MealBloc(
             RemoteDataRepositoriesImpl(),
           ),
-        ),
-        BlocProvider(
-          create: (context) => NavigationBloc(),
         ),
       ],
       child: MyApp(),
