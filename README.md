@@ -1,10 +1,11 @@
 # the_meal_db
 
-Sebuah app resep masakan, sederhana bagaimana cara menggunakan flutter_bloc 
+Simple food recipes using Flutter with flutter_bloc package. <br>
+Sorry if the app not working correctly :)
 
-## Fitur
-- [x] Mencari nama resep (Inggris)
-- [x] Detail dari resep tersebut
-- [x] Navigasi dengan bloc
+## Feature
+- [x] Search Recipes
+- [x] Recipes Detail
+
 ## Preview
 <img src=".preview/vokoscreenNG-2020-11-21_14-23-00.gif"/>
